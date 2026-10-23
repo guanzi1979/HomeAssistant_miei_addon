@@ -1,4 +1,4 @@
-name: "Turni Dipendenti"
+name: "ProMagdaTurni"
 version: "1.0.0"
 slug: "turni_dipendenti"
 description: "Preferenze personali e generazione turni con FastAPI e HTMX"
