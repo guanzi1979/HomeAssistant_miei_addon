@@ -1,0 +1,69 @@
+1. Gestione separata dei mesi
+Attualmente hai un progetto mensile attivo. Cambiare mese nella configurazione non crea automaticamente un archivio separato delle preferenze.
+
+Aggiungerei:
+
+creazione di un nuovo mese;
+copia di dipendenti e competenze, senza copiare automaticamente le richieste;
+storico dei mesi precedenti;
+stati Richieste aperte → Richieste chiuse → Bozza → Pubblicato.
+È la miglioria più importante prima di usare l’app per più mesi consecutivi.
+
+2. Tabella pubblicata per i dipendenti
+Oggi il dipendente inserisce le preferenze, ma non ha una pagina per consultare il proprio turno definitivo.
+
+Aggiungerei “I miei turni”, con:
+
+calendario personale;
+distinzione tra preferenza richiesta e turno assegnato;
+data dell’ultima pubblicazione;
+download del calendario personale.
+La tabella pubblicata dovrebbe restare separata dalla bozza: nuove richieste o rigenerazioni non devono far sparire i turni già comunicati.
+
+3. Generazione senza bloccare l’app
+Nel codice attuale il solver viene eseguito durante la richiesta web, mentre gli accessi sono serializzati. Durante il calcolo, gli altri utenti possono dover aspettare.
+
+Lo sposterei in un lavoro in background, mostrando:
+
+Generazione in corso… Puoi continuare a usare l’app.
+
+Il risultato sarebbe salvato come bozza soltanto se i dati di partenza non sono cambiati nel frattempo.
+
+4. Protezione dai salvataggi che sovrascrivono dati aggiornati
+La pagina personale ha già un controllo di revisione. La griglia dell’amministratore, invece, invia l’intera tabella: se rimane aperta mentre un dipendente salva nuove preferenze, un successivo salvataggio può sovrascriverle.
+
+Aggiungerei anche alla griglia:
+
+controllo della versione dei dati;
+avviso quando qualcuno ha modificato le richieste;
+salvataggio delle sole celle cambiate.
+5. Interfaccia dipendente più pratica
+Sulla pagina delle preferenze farei queste piccole aggiunte:
+
+Miglioria	Vantaggio
+Giorno della settimana accanto alla data	Si riconoscono subito sabati e domeniche
+Colori diversi per mattina, pomeriggio, notte e riposo	Il mese si legge più facilmente
+Contatori “Turni richiesti: 2/3” e “Riposi: 1/2”	Si vedono subito i limiti
+Avviso prima di uscire con modifiche non salvate	Si evitano richieste perse
+Conferma evidente dopo il salvataggio	Il dipendente sa che l’operazione è riuscita
+I colori sarebbero sempre accompagnati da testo, non usati come unico indicatore.
+
+6. Pannello amministratore riepilogativo
+Una pagina iniziale con:
+
+mese in lavorazione;
+stato della raccolta;
+dipendenti che hanno salvato le preferenze;
+dipendenti che hanno confermato “Nessuna preferenza”;
+eventuali criticità della bozza;
+pulsanti Chiudi richieste, Genera bozza, Pubblica.
+È importante distinguere chi non ha ancora risposto da chi non desidera richiedere nulla.
+
+7. Backup e gestione account
+Infine aggiungerei:
+
+reimpostazione delle password dei dipendenti dall’area amministratore;
+disattivazione degli account senza eliminarli;
+scadenza della raccolta delle preferenze;
+registro delle modifiche effettive, non soltanto degli accessi;
+backup periodico e prova di ripristino.
